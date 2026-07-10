@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ananya Mishra — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0b0e14; --bg2:#12161f;
+  --glass:rgba(255,255,255,0.05); --glass-brd:rgba(255,255,255,0.10);
+  --text:#e8eaf0; --sub:#9aa3b5;
+  --accent:#7cf5c4; --accent2:#8fb4ff;
+  --shadow:rgba(0,0,0,0.45);
+}
+[data-theme="light"]{
+  --bg1:#f2f4f8; --bg2:#e7ebf3;
+  --glass:rgba(255,255,255,0.55); --glass-brd:rgba(20,25,40,0.10);
+  --text:#181c26; --sub:#5a6178;
+  --accent:#0f9d68; --accent2:#3b63d9;
+  --shadow:rgba(30,40,70,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Inter',sans-serif; color:var(--text);
+  background:radial-gradient(circle at 20% 10%, var(--bg2), var(--bg1) 60%);
+  min-height:100vh; transition:background .5s,color .4s; overflow-x:hidden;
+}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.35;z-index:0;pointer-events:none;transition:opacity .5s;}
+.b1{width:380px;height:380px;background:var(--accent);top:-100px;left:-100px;}
+.b2{width:320px;height:320px;background:var(--accent2);bottom:-80px;right:-80px;}
+nav{
+  position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;
+  padding:18px 6vw;backdrop-filter:blur(16px);background:var(--glass);border-bottom:1px solid var(--glass-brd);
+}
+.logo{font-family:'Space Grotesk';font-weight:700;font-size:1.1rem;letter-spacing:.5px;}
+.logo span{color:var(--accent);}
+.toggle{
+  width:52px;height:28px;border-radius:20px;background:var(--glass);border:1px solid var(--glass-brd);
+  cursor:pointer;position:relative;transition:.3s;
+}
+.toggle::after{
+  content:"";position:absolute;width:20px;height:20px;border-radius:50%;top:3px;left:3px;
+  background:var(--accent);transition:.35s;box-shadow:0 0 10px var(--accent);
+}
+[data-theme="light"] .toggle::after{left:27px;background:var(--accent2);box-shadow:0 0 10px var(--accent2);}
+
+main{max-width:900px;margin:0 auto;padding:0 6vw;position:relative;z-index:1;}
+.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+.eyebrow{font-family:'JetBrains Mono';font-size:.8rem;letter-spacing:2px;color:var(--accent);text-transform:uppercase;}
+h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;}
+h1 em{font-style:normal;color:var(--accent);}
+.tagline{color:var(--sub);font-size:1.05rem;max-width:560px;line-height:1.6;}
+.contact-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;}
+.pill{
+  font-family:'JetBrains Mono';font-size:.8rem;padding:8px 14px;border-radius:30px;
+  background:var(--glass);border:1px solid var(--glass-brd);backdrop-filter:blur(10px);color:var(--sub);
+  transition:.3s;
+}
+.pill:hover{border-color:var(--accent);color:var(--text);transform:translateY(-2px);}
+
+section{padding:70px 0;}
+.sec-title{
+  font-family:'Space Grotesk';font-size:1.6rem;font-weight:600;margin-bottom:34px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-title::after{content:"";flex:1;height:1px;background:var(--glass-brd);}
+
+.card{
+  background:var(--glass);border:1px solid var(--glass-brd);border-radius:18px;
+  padding:26px 28px;backdrop-filter:blur(18px);box-shadow:0 8px 32px var(--shadow);
+  transition:.35s; margin-bottom:20px;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--accent);}
+.card h3{font-family:'Space Grotesk';font-size:1.15rem;margin-bottom:4px;}
+.card .meta{font-family:'JetBrains Mono';font-size:.75rem;color:var(--accent);margin-bottom:12px;display:block;}
+.card ul{padding-left:18px;color:var(--sub);line-height:1.7;font-size:.93rem;}
+.card ul li::marker{color:var(--accent);}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+.skill-card h4{font-family:'Space Grotesk';font-size:.95rem;margin-bottom:10px;color:var(--accent2);}
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{
+  font-family:'JetBrains Mono';font-size:.72rem;padding:5px 10px;border-radius:8px;
+  background:var(--glass);border:1px solid var(--glass-brd);color:var(--sub);
+}
+
+.edu-item{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid var(--glass-brd);}
+.edu-item:last-child{border-bottom:none;}
+.edu-item h4{font-family:'Space Grotesk';font-size:1rem;}
+.edu-item .school{color:var(--sub);font-size:.88rem;}
+.edu-item .yr{font-family:'JetBrains Mono';font-size:.78rem;color:var(--accent);white-space:nowrap;}
+
+footer{
+  text-align:center;padding:40px 6vw 60px;color:var(--sub);font-family:'JetBrains Mono';font-size:.8rem;
+}
+footer a{color:var(--accent);text-decoration:none;}
+
+@media(max-width:600px){.edu-item{flex-direction:column;gap:4px;}}
+</style>
+</head>
+<body data-theme="dark">
+<div class="blob b1"></div><div class="blob b2"></div>
+
+<nav>
+  <div class="logo">AM<span>.</span></div>
+  <div class="toggle" onclick="toggleTheme()" role="button" aria-label="Toggle light and dark mode"></div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">Data Analyst · Gorakhpur, UP</div>
+    <h1>Ananya <em>Mishra</em></h1>
+    <p class="tagline">I turn raw datasets into clear, actionable insight — building dashboards and queries with SQL, Power BI, and Excel that help businesses see past surface-level numbers.</p>
+    <div class="contact-row">
+      <a class="pill" href="tel:+919452409816">+91 9452409816</a>
+      <a class="pill" href="mailto:ananya.mishra1119@gmail.com">ananya.mishra1119@gmail.com</a>
+      <a class="pill" href="https://www.linkedin.com/in/ananya-mishra-22ba24294/" target="_blank">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-title">Skills &amp; Certifications</div>
+    <div class="skills-grid">
+      <div class="card skill-card">
+        <h4>Technical</h4>
+        <div class="tags">
+          <span class="tag">SQL · Joins/CTEs/Window Fns</span><span class="tag">MySQL</span>
+          <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Excel</span>
+          <span class="tag">Power Query</span><span class="tag">Pivot Tables</span><span class="tag">Data Cleaning</span>
+        </div>
+      </div>
+      <div class="card skill-card">
+        <h4>Core Competencies</h4>
+        <div class="tags">
+          <span class="tag">Business Intelligence</span><span class="tag">Dashboard Dev</span>
+          <span class="tag">Trend Analysis</span><span class="tag">KPI Tracking</span><span class="tag">Attention to Detail</span>
+        </div>
+      </div>
+      <div class="card skill-card">
+        <h4>Certifications</h4>
+        <div class="tags">
+          <span class="tag">Microsoft Excel</span><span class="tag">Power BI Desktop</span>
+          <span class="tag">SQL</span><span class="tag">Data Science (Ongoing)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-title">Experience</div>
+    <div class="card">
+      <h3>Quantity Surveying Intern — DLF Limited</h3>
+      <span class="meta">Jan 2025 – May 2025</span>
+      <ul>
+        <li>Performed quantity estimation using engineering drawings and BOQs.</li>
+        <li>Used Excel for calculations, quantity validation, and documentation.</li>
+        <li>Built strong attention to detail through drawing interpretation and verification.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-title">Projects</div>
+
+    <div class="card">
+      <h3>Walmart Customer Retention Analytics</h3>
+      <span class="meta">Power BI · DAX · Power Query · Data Modelling</span>
+      <ul>
+        <li>Built a multi-page Power BI dashboard analysing churn, repeat purchases, loyalty, promotions, and CLV.</li>
+        <li>Found 49.67% churn despite an 83.67% repeat purchase rate — frequency alone doesn't ensure retention.</li>
+        <li>Identified 71.67% of customers in the low-CLV segment; analysed promotion effectiveness by segment.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Tesla Social Media Analytics for Strategic Branding</h3>
+      <span class="meta">Excel · Power Query · Pivot Tables · Charts</span>
+      <ul>
+        <li>Built an interactive Excel dashboard across 10M+ impressions, 819K+ likes, 142K+ shares, 74K+ comments.</li>
+        <li>Identified Instagram as top performer (~19% engagement, 0.33% follower growth); reels/video led formats.</li>
+        <li>Delivered platform-wise trend insights and content-strategy recommendations.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>FedEx Logistics Optimization for Delivery Routes</h3>
+      <span class="meta">MySQL · SQL · CTEs · Window Functions</span>
+      <ul>
+        <li>Analysed shipment, route, warehouse, and delivery data to evaluate on-time performance and bottlenecks.</li>
+        <li>Found 6.80% overall on-time rate; Route R002 averaged 41.04 hrs delay; Warehouse W008 led at 10.71%.</li>
+        <li>Traced traffic (48.6%) and weather (29.3%) as leading delay causes; recommended optimizations.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-title">Education</div>
+    <div class="card">
+      <div class="edu-item">
+        <div><h4>B.Tech in Civil Engineering</h4><div class="school">MMMUT, Gorakhpur — 7.71 CGPA</div></div>
+        <div class="yr">2021 – 2025</div>
+      </div>
+      <div class="edu-item">
+        <div><h4>Intermediate</h4><div class="school">St. Joseph's School, Gorakhnath — 97.75% (CISCE)</div></div>
+        <div class="yr">2020 – 2021</div>
+      </div>
+      <div class="edu-item">
+        <div><h4>High School</h4><div class="school">St. Joseph's School, Gorakhnath — 94.40% (ICSE)</div></div>
+        <div class="yr">2018 – 2019</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Built by Ananya Mishra · <a href="mailto:ananya.mishra1119@gmail.com">say hello</a></footer>
+
+<script>
+function toggleTheme(){
+  const b=document.body;
+  b.dataset.theme = b.dataset.theme==="dark" ? "light" : "dark";
+}
+</script>
+</body>
+</html>

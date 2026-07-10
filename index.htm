@@ -47,7 +47,16 @@ nav{
 [data-theme="light"] .toggle::after{left:27px;background:var(--accent2);box-shadow:0 0 10px var(--accent2);}
 
 main{max-width:900px;margin:0 auto;padding:0 6vw;position:relative;z-index:1;}
-.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+.hero{min-height:78vh;display:flex;align-items:center;gap:48px;flex-wrap:wrap;}
+.hero-text{flex:1 1 420px;display:flex;flex-direction:column;gap:14px;}
+.photo-frame{
+  flex:0 0 260px;width:260px;aspect-ratio:637/564;border-radius:22px;overflow:hidden;
+  background:var(--glass);border:1px solid var(--glass-brd);backdrop-filter:blur(18px);
+  box-shadow:0 12px 40px var(--shadow);transition:.35s;
+}
+.photo-frame:hover{transform:translateY(-4px);border-color:var(--accent);}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+@media(max-width:700px){.hero{flex-direction:column-reverse;}.photo-frame{width:200px;flex-basis:200px;}}
 .eyebrow{font-family:'JetBrains Mono';font-size:.8rem;letter-spacing:2px;color:var(--accent);text-transform:uppercase;}
 h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;}
 h1 em{font-style:normal;color:var(--accent);}
@@ -110,14 +119,17 @@ footer a{color:var(--accent);text-decoration:none;}
 
 <main>
   <section class="hero">
-    <div class="eyebrow">Data Analyst · Gorakhpur, UP</div>
-    <h1>Ananya <em>Mishra</em></h1>
-    <p class="tagline">I turn raw datasets into clear, actionable insight — building dashboards and queries with SQL, Power BI, and Excel that help businesses see past surface-level numbers.</p>
-    <div class="contact-row">
-      <a class="pill" href="tel:+919452409816">+91 9452409816</a>
-      <a class="pill" href="mailto:ananya.mishra1119@gmail.com">ananya.mishra1119@gmail.com</a>
-      <a class="pill" href="https://www.linkedin.com/in/ananya-mishra-22ba24294/" target="_blank">LinkedIn ↗</a>
+    <div class="hero-text">
+      <div class="eyebrow">Data Analyst · Gorakhpur, UP</div>
+      <h1>Ananya <em>Mishra</em></h1>
+      <p class="tagline">I turn raw datasets into clear, actionable insight — building dashboards and queries with SQL, Power BI, and Excel that help businesses see past surface-level numbers.</p>
+      <div class="contact-row">
+        <a class="pill" href="tel:+919452409816">+91 9452409816</a>
+        <a class="pill" href="mailto:ananya.mishra1119@gmail.com">ananya.mishra1119@gmail.com</a>
+        <a class="pill" href="https://www.linkedin.com/in/ananya-mishra-22ba24294/" target="_blank">LinkedIn ↗</a>
+      </div>
     </div>
+    <div class="photo-frame"><img src="Photo21.jpg" alt="Ananya Mishra"></div>
   </section>
 
   <section id="skills">
